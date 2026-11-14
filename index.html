@@ -937,11 +937,11 @@ img { max-width: 100%; height: auto; }
   dateInput.min = todayPhoenixStr();
   if (!dateInput.value) { dateInput.value = todayPhoenixStr(); }
   populateTimes();
-  try { var saved = localStorage.getItem("tpm-lang"); if (saved === "es" || saved === "en") { lang = saved; } } catch (e) {}
+  try { localStorage.removeItem("tpm-lang"); } catch (e) {}
   applyLang();
   loadMap();
   setInterval(updateStatus, 60000);
-  lang = "en";
+})();
 </script>
 </body>
 </html>
