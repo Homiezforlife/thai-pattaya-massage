@@ -364,7 +364,7 @@ img { max-width: 100%; height: auto; }
 <header class="site-header">
   <a class="brand" href="#top" aria-label="Thai Pattaya Massage, back to top">
     <span class="brand-name">Thai Pattaya Massage</span>
-    <span class="brand-thai" lang="th">นวดแผนไทย</span>
+    
   </a>
   <div class="header-right">
     <nav class="site-nav" aria-label="Main">
@@ -374,7 +374,6 @@ img { max-width: 100%; height: auto; }
       <a href="#reviews" data-i18n="navReviews">Reviews</a>
       <a href="#visit" data-i18n="navVisit">Hours and location</a>
     </nav>
-    <button class="lang-toggle" type="button" id="lang-toggle" lang="es">Español</button>
     <a class="btn btn-primary btn-small header-call" href="tel:+16232315655" data-i18n="headerCall">Call (623) 231-5655</a>
   </div>
 </header>
@@ -647,7 +646,7 @@ img { max-width: 100%; height: auto; }
 
 <footer class="site-footer">
   <div class="wrap foot-grid">
-    <p class="brand"><span class="brand-name">Thai Pattaya Massage</span><span class="brand-thai" lang="th">นวดแผนไทย</span></p>
+    <p class="brand"><span class="brand-name">Thai Pattaya Massage</span></p>
     <p><span>3045 W Agua Fria Fwy, Suite 104, Phoenix, AZ 85027</span><br><span data-i18n="footHours">Monday to Saturday 9 AM to 9 PM, Sunday 10 AM to 6 PM</span><br><a href="tel:+16232315655">(623) 231-5655</a></p>
     <p class="demo-note" data-i18n="demoNote">Demo concept made by Aaron. Review quotes come from public Yelp reviews. Prices, hours and services should be confirmed by the owner before this goes live.</p>
   </div>
@@ -790,14 +789,11 @@ img { max-width: 100%; height: auto; }
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t(el.dataset.i18n); });
     document.querySelectorAll("[data-i18n-html]").forEach(function (el) { el.innerHTML = t(el.dataset.i18nHtml); });
-    var btn = document.getElementById("lang-toggle");
-    btn.textContent = lang === "es" ? "English" : "Español";
-    btn.lang = lang === "es" ? "en" : "es";
     updateStatus();
     updatePlanner();
   }
 
-  document.getElementById("lang-toggle").addEventListener("click", function () {
+  var _lt = document.getElementById("lang-toggle"); if (_lt) _lt.addEventListener("click", function () {
     lang = lang === "es" ? "en" : "es";
     try { localStorage.setItem("tpm-lang", lang); } catch (e) {}
     applyLang();
@@ -945,7 +941,7 @@ img { max-width: 100%; height: auto; }
   applyLang();
   loadMap();
   setInterval(updateStatus, 60000);
-})();
+  lang = "en";
 </script>
 </body>
 </html>
